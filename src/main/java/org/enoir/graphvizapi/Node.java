@@ -9,6 +9,7 @@ public class Node extends BaseGraphObject {
     private String shape;
     private String bgColor;
 
-    public Node() {
+    public Node(String id) {
+        super(id);
     }
 }
