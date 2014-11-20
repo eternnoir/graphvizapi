@@ -12,4 +12,9 @@ public class Node extends BaseGraphObject {
     public Node(String id) {
         super(id);
     }
+
+    @Override
+    public String genDotString() {
+        return null;
+    }
 }
