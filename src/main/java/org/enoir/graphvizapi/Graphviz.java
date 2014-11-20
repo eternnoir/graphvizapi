@@ -28,13 +28,14 @@ public class Graphviz {
 
     }
 
-    public byte[] getGraph(String dot_source, String type, String representationType,String dpi)
+    public byte[] getGraphByteArray(Graph graph, String type, String representationType,String dpi)
     {
+        String dotSource = graph.genDotString();
         File dot;
         byte[] img_stream = null;
 
         try {
-            dot = writeDotSourceToFile(dot_source);
+            dot = writeDotSourceToFile(dotSource);
             if (dot != null)
             {
                 img_stream = get_img_stream(dot, type, representationType,dpi);
