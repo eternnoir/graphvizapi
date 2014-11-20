@@ -1,8 +1,6 @@
 package org.enoir.graphvizapi;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -10,25 +8,19 @@ import java.util.Properties;
  */
 public class Graphviz {
 
-    private final static String osName = System.getProperty("os.name").replaceAll("\\s", "");
-    private final static String cfgProp = "config.properties";
-    private final static Properties configFile = new Properties() {
-        private final static long serialVersionUID = 1L; {
-            try {
-                load(new FileInputStream(cfgProp));
-            } catch (Exception e) {
-                System.err.println(e);
-            }
-        }
-    };
-    private static String DOT = configFile.getProperty("dotFor" + osName);
-    private static String TMP_PATH = configFile.getProperty("tempDirFor" + osName);
+    private static String DOT = "/usr/bin/dot";
+    private static String TMP_PATH = "/tmp";
 
     public Graphviz() {
 
     }
 
-    public byte[] getGraphByteArray(Graph graph, String type, String representationType,String dpi)
+    public Graphviz(String dotPath,String tmpPaht){
+        this.DOT = dotPath;
+        this.TMP_PATH = tmpPaht;
+    }
+
+    public byte[] getGraphByteArray(Graph graph, String type, String dpi)
     {
         String dotSource = genDotStringByGraph(graph);
         File dot;
@@ -38,14 +30,16 @@ public class Graphviz {
             dot = writeDotSourceToFile(dotSource);
             if (dot != null)
             {
-                img_stream = get_img_stream(dot, type, representationType,dpi);
+                img_stream = get_img_stream(dot, type, "dot",dpi);
                 if (dot.delete() == false) {
                     //TODO throw Exception
                 }
                 return img_stream;
             }
             return null;
-        } catch (java.io.IOException ioe) { return null; }
+        } catch (java.io.IOException ioe) {
+            return null;
+        }
     }
 
     private String genDotStringByGraph(Graph graph){
@@ -91,6 +85,13 @@ public class Graphviz {
             String[] args = {DOT, "-T"+type, "-K"+representationType, "-Gdpi="+dpi, dot.getAbsolutePath(), "-o", imgFile.getAbsolutePath()};
             Process p = rt.exec(args);
             p.waitFor();
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                line = br.readLine();
+                System.out.println(line);
+            }
 
             FileInputStream finput = new FileInputStream(imgFile.getAbsolutePath());
             imgageStream = new byte[finput.available()];
