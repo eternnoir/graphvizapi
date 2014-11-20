@@ -33,10 +33,18 @@ public class Graph extends BaseGraphObject {
         this.subgraphList.add(graph);
     }
 
-
     @Override
     public String genDotString() {
-        return null;
+        StringBuilder dotString = new StringBuilder();
+        return dotString.toString();
+    }
+
+    private String genNodesString(){
+        StringBuilder nodeString = new StringBuilder();
+        for(Node node: nodeList){
+            nodeString.append(node.genDotString());
+        }
+        return nodeString.toString();
     }
 }
 
