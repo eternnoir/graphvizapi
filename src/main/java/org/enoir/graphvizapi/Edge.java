@@ -13,6 +13,13 @@ public class Edge extends BaseGraphObject {
         this.toNode = toNode;
     }
 
+
+    public Edge(Node fromNode,Node toNode){
+        super("");
+        this.fromNode = fromNode;
+        this.toNode = toNode;
+    }
+
     public Node getFromNode(){
         return this.fromNode;
     }

@@ -45,7 +45,7 @@ public abstract class BaseGraphObject {
     public String genAttributeDotString(){
         StringBuilder attrDotString = new StringBuilder();
         for(Attributes attr : this.attrList){
-            attrDotString.append(attr.getAttrName()+"="+attr.getAttrValue()+"\n");
+            attrDotString.append(attr.getAttrName()+"="+attr.getAttrValue()+";\n");
         }
         return attrDotString.toString();
     }
