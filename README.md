@@ -33,5 +33,5 @@ private void draw()
 }
 ```
 ##### Result
-![Example 1](https://raw.githubusercontent.com/eternnoir/graphvizapi/develop/Sample/outEX1.png)
+![Example 1](https://raw.githubusercontent.com/eternnoir/graphvizapi/master/Sample/outEX1.png)
 
