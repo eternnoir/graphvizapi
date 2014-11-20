@@ -15,7 +15,7 @@ private void draw()
 {
     Graphviz gv = new Graphviz();                           //Graphviz Object.
     Graph graph = new Graph("g1", GraphType.DIGRAPH);       //Create New Gpaph.
-    graph.addAttributes(new Attributes(  "rankdir","LR"));  //Add some attribute.
+    graph.addAttributes(new Attributes("rankdir","LR"));  //Add some attribute.
     Node n1 = new Node("N1");                               //Create Node Object.
     n1.addAttributes(new Attributes("label","\" Node1 \""));//Add attribute
     Node n2 = new Node("N2");
