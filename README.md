@@ -1,6 +1,6 @@
 # graphvizapi
 
-A Graphviz Java API. Let Java easy to use graphviz draw graph.
+A Graphviz Java API.
 
 ## Requirements
 
