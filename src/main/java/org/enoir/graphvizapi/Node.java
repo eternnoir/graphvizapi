@@ -5,16 +5,14 @@ package org.enoir.graphvizapi;
  */
 public class Node extends BaseGraphObject {
 
-    private String label;
-    private String shape;
-    private String bgColor;
-
     public Node(String id) {
         super(id);
     }
 
     @Override
     public String genDotString() {
-        return null;
+        StringBuilder dotString = new StringBuilder();
+        dotString.append("["+this.genAttributeDotString()+"]");
+        return dotString.toString();
     }
 }

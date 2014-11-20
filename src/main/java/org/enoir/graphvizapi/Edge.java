@@ -23,6 +23,8 @@ public class Edge extends BaseGraphObject {
 
     @Override
     public String genDotString() {
-        return null;
+        StringBuilder dotString = new StringBuilder();
+        dotString.append("["+this.genAttributeDotString()+"]");
+        return dotString.toString();
     }
 }

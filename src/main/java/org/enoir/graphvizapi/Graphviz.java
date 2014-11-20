@@ -30,7 +30,7 @@ public class Graphviz {
 
     public byte[] getGraphByteArray(Graph graph, String type, String representationType,String dpi)
     {
-        String dotSource = graph.genDotString();
+        String dotSource = genDotStringByGraph(graph);
         File dot;
         byte[] img_stream = null;
 
@@ -40,12 +40,28 @@ public class Graphviz {
             {
                 img_stream = get_img_stream(dot, type, representationType,dpi);
                 if (dot.delete() == false) {
-
+                    //TODO throw Exception
                 }
                 return img_stream;
             }
             return null;
         } catch (java.io.IOException ioe) { return null; }
+    }
+
+    private String genDotStringByGraph(Graph graph){
+        StringBuilder dotString = new StringBuilder();
+        if(graph.getGraphType() == GraphType.DIGRAPH){
+            dotString.append("digraph ");
+
+        }else if(graph.getGraphType() == GraphType.GRPAH){
+
+            dotString.append("graph ");
+        }else{
+            assert false;   //TYPE NOT FOUND
+        }
+        dotString.append(graph.getId());
+        dotString.append(graph.genDotString());
+        return dotString.toString();
     }
 
     private File writeDotSourceToFile(String str) throws java.io.IOException

@@ -41,5 +41,15 @@ public abstract class BaseGraphObject {
     public void setId(String id){
         this.id = id;
     }
+
+    public String genAttributeDotString(){
+        StringBuilder attrDotString = new StringBuilder();
+        for(Attributes attr : this.attrList){
+            attrDotString.append(attr.getAttrName()+"+"+attr.getAttrValue()+"\n");
+        }
+        return attrDotString.toString();
+    }
+
     abstract public String genDotString();
+
 }
