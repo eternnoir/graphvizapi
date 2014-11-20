@@ -4,7 +4,7 @@ A Graphviz Java API. Let Java easy to use graphviz draw graph.
 
 ## Requirements
 
-* Java 1.6(up)
+* Java 1.6+
 * Graphviz [Graphviz | Graphviz - Graph Visualization Software](www.graphviz.org/)
 
 ## Quick Start
