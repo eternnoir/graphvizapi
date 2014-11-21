@@ -1,10 +1,8 @@
 package org.enoir.graphvizapi.test;
 
 import org.enoir.graphvizapi.*;
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
