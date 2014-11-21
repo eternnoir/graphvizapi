@@ -29,6 +29,7 @@ public class TestGraphviz {
         graph.addEdge(new Edge("", n1, n2));
         graph.addEdge(new Edge("", n2, n3));
         graph.addEdge(new Edge("",n3,n1));
+        graph.addEdge(new Edge("",n3,n1));
 
         String type = "png";
         byte[] bytearray = gz.getGraphByteArray(graph, type, "100");
