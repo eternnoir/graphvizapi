@@ -1,4 +1,4 @@
-# graphvizapi
+# graphvizapi ![](https://travis-ci.org/eternnoir/graphvizapi.svg?branch=master)
 
 A Graphviz Java API. Let Java easy to use graphviz draw graph.
 
