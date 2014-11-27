@@ -15,11 +15,10 @@ public class TestException {
             Node node = new Node("testId");
             node.addAttributes(new Attributes("color", "#000"));
             node.removeAttributes("label");
-        }catch (AttributeNotFondException e){
+        }catch (AttributeNotFondException e) {
             Assert.assertTrue(true);
-        }catch (Exception ex){
-            Assert.assertTrue(false);
         }
+        Assert.assertTrue(false);
     }
 }
 
