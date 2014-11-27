@@ -17,8 +17,9 @@ public class TestException {
             node.removeAttributes("label");
         }catch (AttributeNotFondException e) {
             Assert.assertTrue(true);
+        }catch (Exception ex){
+            Assert.assertTrue(false);
         }
-        Assert.assertTrue(false);
     }
 }
 
