@@ -1,5 +1,6 @@
 package org.enoir.graphvizapi;
 
+import org.enoir.graphvizapi.exception.AttributeNotFondException;
 import org.w3c.dom.Attr;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public abstract class BaseGraphObject {
             }
         }
         if(removeList.size()==0){
-            //TODO maybe throw exception
+            throw new AttributeNotFondException("ID: "+id+";attribute:"+name);
         }
         for(Attributes attr: removeList){
             this.attrList.remove(attr);

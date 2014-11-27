@@ -5,6 +5,6 @@ package org.enoir.graphvizapi.exception;
  */
 public class BaseException extends RuntimeException{
     public BaseException(String message){
-
+        super(message);
     }
 }
