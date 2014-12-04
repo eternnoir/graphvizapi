@@ -20,6 +20,10 @@ public class Graphviz {
         this.TMP_PATH = tmpPaht;
     }
 
+    public void setTmpPath(String tmpPath){
+        this.TMP_PATH = tmpPath;
+    }
+
     public byte[] getGraphByteArray(Graph graph, String type, String dpi)
     {
         String dotSource = genDotStringByGraph(graph);
