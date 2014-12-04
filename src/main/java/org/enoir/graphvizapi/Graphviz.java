@@ -8,7 +8,7 @@ import java.util.Properties;
  */
 public class Graphviz {
 
-    private static String DOT = "/usr/bin/dot";
+    private static String DOT = "dot";
     private static String TMP_PATH = "/tmp";
 
     public Graphviz() {
