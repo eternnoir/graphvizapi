@@ -27,7 +27,7 @@ public class Graphviz {
     public byte[] getGraphByteArray(Graph graph, String type, String dpi)
     {
         String dotSource = genDotStringByGraph(graph);
-        File dot;
+        File dot = null;
         byte[] img_stream = null;
 
         try {
@@ -38,12 +38,18 @@ public class Graphviz {
                 if (dot.delete() == false) {
                     //TODO throw Exception
                 }
-                return img_stream;
             }
-            return null;
         } catch (java.io.IOException ioe) {
-            return null;
+
+        } finally {
+            if(dot!=null) {
+                try {
+                    dot.delete();
+                } catch (Exception ex) {
+                }
+            }
         }
+        return img_stream;
     }
 
     private String genDotStringByGraph(Graph graph){
@@ -64,7 +70,7 @@ public class Graphviz {
 
     private File writeDotSourceToFile(String str) throws java.io.IOException
     {
-        File temp;
+        File temp ;
         try {
             temp = File.createTempFile("graph_", ".dot.tmp", new File(Graphviz.TMP_PATH));
             FileWriter fout = new FileWriter(temp);
@@ -79,7 +85,7 @@ public class Graphviz {
 
     private byte[] get_img_stream(File dot, String type, String representationType,String dpi)
     {
-        File imgFile;
+        File imgFile = null;
         byte[] imgageStream = null;
 
         try {
@@ -111,6 +117,17 @@ public class Graphviz {
         }
         catch (InterruptedException ie) {
             ie.printStackTrace();
+        }finally {
+            try {
+                if(dot !=null){
+                    dot.delete();
+                }
+                if(imgFile != null){
+                    imgFile.delete();
+                }
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
         }
         return imgageStream;
     }
