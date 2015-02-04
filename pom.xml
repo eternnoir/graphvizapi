@@ -7,6 +7,12 @@
     <groupId>org.enoir</groupId>
     <artifactId>graphvizapi</artifactId>
     <version>1.0-SNAPSHOT</version>
+        <properties>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.testTarget>1.6</maven.compiler.testTarget>
+        <maven.compiler.testSource>1.6</maven.compiler.testSource>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
