@@ -55,9 +55,9 @@ public class TestGraphviz {
     private Graph genSimpleGraph() {
 
         Graph graph = new Graph("g1", GraphType.DIGRAPH);
-        graph.addAttributes(new Attributes(  "rankdir","LR"));
+        graph.addAttribute(new Attribute("rankdir", "LR"));
         Node n1 = new Node("N");
-        n1.addAttributes(new Attributes("label","\" Node1 \""));
+        n1.addAttribute(new Attribute("label", "\" Node1 \""));
         Node n2 = new Node("N2");
         Node n3 = new Node("N3");
 

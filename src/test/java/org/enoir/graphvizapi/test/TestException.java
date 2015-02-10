@@ -1,5 +1,5 @@
 package org.enoir.graphvizapi.test;
-import org.enoir.graphvizapi.Attributes;
+import org.enoir.graphvizapi.Attribute;
 import org.enoir.graphvizapi.Node;
 import org.enoir.graphvizapi.exception.AttributeNotFondException;
 import org.junit.Assert;
@@ -13,8 +13,8 @@ public class TestException {
     public void TestAttributeNotFond(){
         try {
             Node node = new Node("testId");
-            node.addAttributes(new Attributes("color", "#000"));
-            node.removeAttributes("label");
+            node.addAttribute(new Attribute("color", "#000"));
+            node.removeAttribute("label");
         }catch (AttributeNotFondException e) {
             Assert.assertTrue(true);
         }catch (Exception ex){
