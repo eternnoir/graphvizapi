@@ -1,7 +1,6 @@
 package org.enoir.graphvizapi;
 
 import org.enoir.graphvizapi.exception.AttributeNotFondException;
-import org.w3c.dom.Attr;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,19 +10,19 @@ import java.util.List;
  */
 public abstract class BaseGraphObject {
     private String id;
-    private List<Attributes> attrList;
+    private List<Attribute> attrList;
     public BaseGraphObject(String id) {
         this.id = id;
-        attrList = new ArrayList<Attributes>();
+        attrList = new ArrayList<Attribute>();
     }
 
-    public void addAttributes(Attributes attr){
+    public void addAttribute(Attribute attr){
         this.attrList.add(attr);
     }
 
-    public void removeAttributes(String name){
-        List<Attributes> removeList = new ArrayList<Attributes>();
-        for(Attributes attr : this.attrList){
+    public void removeAttribute(String name){
+        List<Attribute> removeList = new ArrayList<Attribute>();
+        for(Attribute attr : this.attrList){
             if(attr.getAttrName().equals(name)){
                 removeList.add(attr);
             }
@@ -31,7 +30,7 @@ public abstract class BaseGraphObject {
         if(removeList.size()==0){
             throw new AttributeNotFondException("ID: "+id+";attribute:"+name);
         }
-        for(Attributes attr: removeList){
+        for(Attribute attr: removeList){
             this.attrList.remove(attr);
         }
     }
@@ -45,7 +44,7 @@ public abstract class BaseGraphObject {
 
     public String genAttributeDotString(){
         StringBuilder attrDotString = new StringBuilder();
-        for(Attributes attr : this.attrList){
+        for(Attribute attr : this.attrList){
             attrDotString.append(attr.getAttrName()+"="+attr.getAttrValue()+";\n");
         }
         return attrDotString.toString();

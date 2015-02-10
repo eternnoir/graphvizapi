@@ -3,10 +3,10 @@ package org.enoir.graphvizapi;
 /**
  * Created by frank on 2014/11/20.
  */
-public class Attributes {
+public class Attribute {
     private String attrName;
     private String attrValue;
-    public Attributes(String name,String value){
+    public Attribute(String name, String value){
         this.attrName = name;
         this.attrValue = value;
     }

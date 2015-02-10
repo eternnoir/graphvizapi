@@ -24,9 +24,9 @@ public class apiExample {
     {
         Graphviz gv = new Graphviz();
         Graph graph = new Graph("g1", GraphType.DIGRAPH);
-        graph.addAttributes(new Attributes(  "rankdir","LR"));
+        graph.addAttribute(new Attribute("rankdir", "LR"));
         Node n1 = new Node("N1");
-        n1.addAttributes(new Attributes("label","\" Node1 \""));
+        n1.addAttribute(new Attribute("label", "\" Node1 \""));
         Node n2 = new Node("N2");
         Node n3 = new Node("N3");
 
@@ -65,7 +65,7 @@ public class apiExample {
         }
          for(int i=0;i<nodeNumber/2;i++){
             Node n = new Node("sN"+Integer.toString(i));
-             n.addAttributes(new Attributes("style","filled"));
+             n.addAttribute(new Attribute("style", "filled"));
             nodeList.add(n);
             subgraph.addNode(n);
         }
