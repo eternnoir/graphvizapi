@@ -34,8 +34,13 @@ public class TestGraphviz {
     public void testGenImageFail() {
         Graphviz gz = new Graphviz("/dot","./");
         Graph graph = new Graph("g1", GraphType.DIGRAPH);
-        String type = "png";
-        byte[] bytearray = gz.getGraphByteArray(graph, type, "100");
+        byte[] bytearray = null;
+        try {
+            String type = "png";
+            bytearray = gz.getGraphByteArray(graph, type, "100");
+        }catch (Exception e){
+
+        }
         Assert.assertTrue(bytearray==null);
     }
 
