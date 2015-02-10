@@ -85,8 +85,7 @@ public class Graph extends BaseGraphObject {
             return "->";
         }else if(this.graphType == GraphType.GRPAH){
             return "--";
-        }
-        else {
+        }else {
             //TODO throw exception
             return null;
         }
