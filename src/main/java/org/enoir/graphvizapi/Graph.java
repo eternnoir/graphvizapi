@@ -1,5 +1,7 @@
 package org.enoir.graphvizapi;
 
+import org.enoir.graphvizapi.exception.GraphException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,10 +87,8 @@ public class Graph extends BaseGraphObject {
             return "->";
         }else if(this.graphType == GraphType.GRPAH){
             return "--";
-        }
-        else {
-            //TODO throw exception
-            return null;
+        }else {
+            throw new GraphException("Not Support Graph Type.");
         }
     }
 }

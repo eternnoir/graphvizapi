@@ -1,5 +1,7 @@
 package org.enoir.graphvizapi;
 
+import org.enoir.graphvizapi.exception.GraphException;
+
 import java.io.*;
 import java.util.Properties;
 
@@ -32,15 +34,11 @@ public class Graphviz {
 
         try {
             dot = writeDotSourceToFile(dotSource);
-            if (dot != null)
-            {
+            if (dot != null){
                 img_stream = get_img_stream(dot, type, "dot",dpi);
-                if (dot.delete() == false) {
-                    //TODO throw Exception
-                }
             }
         } catch (java.io.IOException ioe) {
-
+            throw new GraphException("Can not delete tmp file.");
         } finally {
             if(dot!=null) {
                 try {
