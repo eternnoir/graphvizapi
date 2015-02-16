@@ -19,6 +19,7 @@ public class apiExample {
         apiExample ex = new apiExample ();
         ex.draw();
         ex.draw2();
+        ex.draw3();
     }
     private void draw()
     {
@@ -81,6 +82,57 @@ public class apiExample {
         File out = new File(tmpPath+"/outEX2."+ type);
         this.writeGraphToFile( gv.getGraphByteArray(graph, type, "100"), out );
 
+    }
+
+    public void draw3(){
+        Graphviz gv = new Graphviz();
+        Graph graph = new Graph("g1", GraphType.DIGRAPH);
+        Graph cluster_0 = new Graph("cluster_0",GraphType.DIGRAPH);
+        cluster_0.addAttribute(new Attribute("style","filled"));
+        cluster_0.addAttribute(new Attribute("color","lightgrey"));
+        cluster_0.addAttribute(new Attribute("label","\"process #1\""));
+        Attribute cn0Attr = new Attribute("style","filled");
+        Node a0 = new Node("a0");
+        Node a1 = new Node("a1");
+        Node a2 = new Node("a2");
+        Node a3 = new Node("a3");
+        cluster_0.addNode(a0);
+        cluster_0.addNode(a1);
+        cluster_0.addNode(a2);
+        cluster_0.addNode(a3);
+        cluster_0.addEdge(new Edge("",a0,a1));
+        cluster_0.addEdge(new Edge("",a1,a2));
+        cluster_0.addEdge(new Edge("",a2,a3));
+        Graph cluster_1 = new Graph("cluster_1",GraphType.DIGRAPH);
+        cluster_1.addAttribute(new Attribute("color","blue"));
+        cluster_1.addAttribute(new Attribute("label","\"process #1\""));
+        Node b0 = new Node("b0");
+        Node b1 = new Node("b1");
+        Node b2 = new Node("b2");
+        Node b3 = new Node("b3");
+        cluster_1.addNode(b0);
+        cluster_1.addNode(b1);
+        cluster_1.addNode(b2);
+        cluster_1.addNode(b3);
+        cluster_1.addEdge(new Edge("",b0,b1));
+        cluster_1.addEdge(new Edge("",b1,b2));
+        cluster_1.addEdge(new Edge("",b2,b3));
+        Node startNode = new Node("Start");
+        Node endNode = new Node("End");
+        graph.addNode(startNode);
+        graph.addNode(endNode);
+        graph.addSubgraph(cluster_0);
+        graph.addSubgraph(cluster_1);
+        graph.addEdge(new Edge("", startNode, a0));
+        graph.addEdge(new Edge("", startNode, b0));
+        graph.addEdge(new Edge("",a1,b3));
+        graph.addEdge(new Edge("",b2,a3));
+        graph.addEdge(new Edge("",a3,a0));
+        graph.addEdge(new Edge("", a3, endNode));
+        graph.addEdge(new Edge("", b3, endNode));
+        String type = "png";
+        File out = new File(tmpPath+"/outEX3."+ type);
+        this.writeGraphToFile( gv.getGraphByteArray(graph, type, "100"), out );
     }
 
     public int writeGraphToFile(byte[] img, File to)
