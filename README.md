@@ -72,7 +72,9 @@ public void draw(){
     cluster_1.addEdge(new Edge("",b1,b2));
     cluster_1.addEdge(new Edge("",b2,b3));
     Node startNode = new Node("Start");
+    startNode.addAttribute(new Attribute("shape","Mdiamond"));
     Node endNode = new Node("End");
+    endNode.addAttribute(new Attribute("shape","Msquare"));
     graph.addNode(startNode);
     graph.addNode(endNode);
     graph.addSubgraph(cluster_0);
