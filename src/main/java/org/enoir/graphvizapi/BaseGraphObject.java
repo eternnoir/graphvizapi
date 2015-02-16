@@ -71,7 +71,7 @@ public abstract class BaseGraphObject {
      * Attribute to dot string.
      * @return dot format string.
      */
-    public String genAttributeDotString(){
+    protected String genAttributeDotString(){
         StringBuilder attrDotString = new StringBuilder();
         for(Attribute attr : this.attrList){
             attrDotString.append(attr.getAttrName()+"="+attr.getAttrValue()+";\n");
