@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.Properties;
 
 /**
+ * The Graphviz Class. Can use this class to generate image byte array.
  * Created by frank on 2014/11/17.
  */
 public class Graphviz {
