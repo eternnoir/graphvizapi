@@ -14,19 +14,38 @@ public class Graphviz {
     private static String DOT = "dot";
     private static String TMP_PATH = "/tmp";
 
+    /**
+     * Constructor. The default graphviz command is "dot". Default tmp file path is "/tmp".
+     */
     public Graphviz() {
-
     }
 
+    /**
+     * Constructor with customize dot command like "/usr/bin/dot". And customize tmp file path.
+     * Make sure user have writable permission.
+     * @param dotPath
+     * @param tmpPaht
+     */
     public Graphviz(String dotPath,String tmpPaht){
         this.DOT = dotPath;
         this.TMP_PATH = tmpPaht;
     }
 
+    /**
+     * The tmp file path setter.
+     * @param tmpPath tmp file path like "/home/user/tmp"
+     */
     public void setTmpPath(String tmpPath){
         this.TMP_PATH = tmpPath;
     }
 
+    /**
+     * Generate Graph's image byte array.
+     * @param graph the graph you want to generate.
+     * @param type the file type.
+     * @param dpi dpi
+     * @return
+     */
     public byte[] getGraphByteArray(Graph graph, String type, String dpi)
     {
         String dotSource = genDotStringByGraph(graph);
