@@ -1,6 +1,6 @@
 # graphvizapi ![](https://travis-ci.org/eternnoir/graphvizapi.svg?branch=master)
 
-A Graphviz Java API.
+A Graphviz Java API.Use OO way to create graphviz image.
 
 ## Requirements
 
