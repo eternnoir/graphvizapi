@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The Graphviz Graph class. It also can use to build subgraph.
  * Created by frank on 2014/11/20.
  */
 public class Graph extends BaseGraphObject {
@@ -15,6 +16,11 @@ public class Graph extends BaseGraphObject {
     private List<Edge> edgeList;
     private List<Graph> subgraphList;
 
+    /**
+     * Constructor.
+     * @param id This Graph's id.
+     * @param graphType Graph's type.
+     */
     public Graph(String id,GraphType graphType){
         super(id);
         this.graphType = graphType;
@@ -23,18 +29,34 @@ public class Graph extends BaseGraphObject {
         this.subgraphList = new ArrayList<Graph>();
     }
 
+    /**
+     * Graph Type getter.
+     * @return graph type.
+     */
     public GraphType getGraphType(){
         return this.graphType;
     }
 
+    /**
+     * Add a node to this graph.
+     * @param node
+     */
     public void addNode(Node node){
         this.nodeList.add(node);
     }
 
+    /**
+     * Add an edge to this graph.
+     * @param edge
+     */
     public void addEdge(Edge edge){
         this.edgeList.add(edge);
     }
 
+    /**
+     * Add subgraph to this graph.
+     * @param graph
+     */
     public void addSubgraph(Graph graph){
         this.subgraphList.add(graph);
     }
