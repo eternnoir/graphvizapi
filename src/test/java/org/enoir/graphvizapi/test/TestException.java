@@ -1,7 +1,7 @@
 package org.enoir.graphvizapi.test;
-import org.enoir.graphvizapi.Attribute;
-import org.enoir.graphvizapi.Node;
+import org.enoir.graphvizapi.*;
 import org.enoir.graphvizapi.exception.AttributeNotFondException;
+import org.enoir.graphvizapi.exception.GraphException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,5 +21,20 @@ public class TestException {
             Assert.assertTrue(false);
         }
     }
+
+    @Test
+    public void TestDotCommandNotFound() {
+        Graphviz gz = new Graphviz("/usr/bin/dot1","./");
+        Graph graph = new Graph("g1", GraphType.DIGRAPH);
+        String type = "png";
+        try {
+            byte[] bytearray = gz.getGraphByteArray(graph, type, "100");
+            Assert.assertTrue(false);
+        }catch (GraphException ge){
+            Assert.assertTrue(true);
+        }
+    }
+
+
 }
 
