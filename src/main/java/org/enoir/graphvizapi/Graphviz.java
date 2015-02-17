@@ -109,12 +109,10 @@ public class Graphviz {
         try {
             imgFile = File.createTempFile("graphviz_", "."+type, new File(Graphviz.TMP_PATH));
             Runtime rt = Runtime.getRuntime();
-
             String[] args = {DOT, "-T"+type, "-K"+representationType, "-Gdpi="+dpi, dot.getAbsolutePath(), "-o", imgFile.getAbsolutePath()};
             Process p = rt.exec(args);
             p.waitFor();
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
             String line = null;
             while ((line = br.readLine()) != null) {
                 line = br.readLine();
@@ -131,10 +129,10 @@ public class Graphviz {
             }
         }
         catch (java.io.IOException ioe) {
-            ioe.printStackTrace();
+            throw new GraphException(ioe.toString());
         }
         catch (InterruptedException ie) {
-            ie.printStackTrace();
+            throw new GraphException(ie.toString());
         }finally {
             try {
                 if(dot !=null){
